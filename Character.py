@@ -6,7 +6,7 @@ max_bag = 20
 objets = {'*' : ('or', 0),
           'j' : ('potion magique', 5),
           '!' : ('épées', 3),
-          '(' : ('arc et flèches', 3),
+          '(' : ('arcs et flèches', 3),
           '&' : ('armure', 3),
           '£' : ('parchemins', 2),
           '¤' : ('anneau de pouvoir', 10),
@@ -14,29 +14,26 @@ objets = {'*' : ('or', 0),
 
 magasin = {pg.K_p : ('potion magique', 50), pg.K_e : ('épées', 10), pg.K_f : ('arcs et flèches', 20), pg.K_a : ('armure', 25), pg.K_v : ('parchemins', 5), pg.K_n : ('nourriture', 5)} 
 
-class Individu:
+objects_0 = {'or' : 0, 'potion magique' : 0, 'épées' : 0, 'arcs et flèches' : 0, 'armure' : 0, 'parchemins' : 0, 'anneau de pouvoir' : 0, 'nourriture' : 0}
 
-    def __init__(self, position, health_points, strength):
+class Character:
+
+    def __init__(self, position = [1, 1], health_points = 100, strength = 15, objects = objects_0, bag = 0, arc_bande = 0, pos_fleche = None):
         self.position = position
         self.health_points = health_points
         self.strength = strength
+        self.objects = objects
+        self.bag = bag
+        def.arc_bande = arc_bande
+        def.pos_fleche = pos_fleche
 
     def blessure(self, coup):
         self.health_points = max(0, self.health_points - coup)
 
-
-
-class Character(Individu):
-
-    def __init__(self, objects, bag):
-        Individu.__init__(self, position, health_points, strength)
-        self.objects = objects
-        self.bag = bag
-
     def want_to_recup(self):
 
 
-    def recup_objet(self):
+    def recup_object(self):
         point = carte(self.position)
         if point in objets:
             if objets[point][1] + self.bag <= max_bag:
@@ -54,7 +51,7 @@ class Character(Individu):
                     if event.key == pg.K_m:
                         event.key = touche
                         if touche in magasin:
-                            if (self.objects['or'] >= magasin[touche][1]) and 
+                            if (self.objects['or'] >= magasin[touche][1]) and ()
 
 
 
